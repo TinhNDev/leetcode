@@ -75,23 +75,39 @@ SELECT
     d.name as Department,
     e.name as Employee,
     e.salary as Salary
-From Employee e
-JOIN (
-    Select departmentId,Max(Salary) as max_salary from Employee
-    Group by departmentId
-) m ON e.departmentId = m.departmentId AND e.salary = m.max_salary
-JOIN Department d ON d.id = e.departmentId
+From
+    Employee e
+    JOIN (
+        Select
+            departmentId,
+            Max(Salary) as max_salary
+        from
+            Employee
+        Group by
+            departmentId
+    ) m ON e.departmentId = m.departmentId
+    AND e.salary = m.max_salary
+    JOIN Department d ON d.id = e.departmentId
 
 solution: Rank
 SELECT
     d.name as Department,
     e.name as Employee,
     e.salary as Salary
-from (
-    Select * , rank() over( PARTITION  departmentId order by salary desc) As  rnk
-    from Employee
-) e
-JOIN Department d ON d.id = e.departmentId
-where e.rank = 1
+from
+    (
+        Select
+            *,
+            rank() over (
+                PARTITION departmentId
+                order by
+                    salary desc
+            ) As rnk
+        from
+            Employee
+    ) e
+    JOIN Department d ON d.id = e.departmentId
+where
+    e.rank = 1
 
 
