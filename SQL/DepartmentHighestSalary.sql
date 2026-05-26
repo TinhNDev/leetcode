@@ -99,7 +99,7 @@ from
         Select
             *,
             rank() over (
-                PARTITION departmentId
+                PARTITION BY departmentId
                 order by
                     salary desc
             ) As rnk
