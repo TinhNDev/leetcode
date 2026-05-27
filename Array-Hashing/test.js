@@ -1,2 +1,2 @@
-const x = {x:1}
-console.log(Object.values(x))
+const x = Math.floor(1 / 3);
+console.log(x);

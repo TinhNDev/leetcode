@@ -1,3 +1,3 @@
-function FindLongestSubstring(s: string, target:number) : string {
-    return ""
+function FindLongestSubstring(s: string, target: number): string {
+  return "";
 }
