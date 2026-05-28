@@ -1,0 +1,94 @@
+Array-Hashing Interview Summary
+
+1. Overview
+- The folder contains array and hashing patterns common in technical interviews.
+- Main techniques: brute-force, sorting, hash map, set, prefix/postfix arrays, sliding window, frequency counting.
+- Key skills: identify the simplest solution, then optimize with hashing or array properties.
+
+2. File-by-file summary
+
+TwoSum.ts
+- Problem: find two indices such that nums[i] + nums[j] == target.
+- Approaches:
+  - twoSum1: brute force O(n^2)
+  - twoSum2: hash map O(n) using value -> index to find complement quickly.
+- Interview points: talk through map lookup, handle duplicates by storing index, return first valid pair.
+
+Contains-Duplicate.ts
+- Problem: detect if any value appears more than once in an array.
+- Approaches:
+  - hasDuplicate1: nested loops O(n^2)
+  - hasDuplicate2: use Set, compare size O(n)
+- Interview points: use Set for membership check, explain built-in set size vs original array length.
+
+Valid-Anagram.ts
+- Problem: determine if two strings are anagrams.
+- Approaches:
+  - isAnagram1: sort both strings and compare (O(n log n))
+  - isAnagram2: frequency map with hash map (O(n))
+- Interview points: mention length check, count characters, decrement frequencies and ensure no leftover counts.
+
+Group-Anagram.ts
+- Problem: group strings that are anagrams of each other.
+- Approach:
+  - Use a frequency vector of 26 letters to create a hashable string key.
+  - Group strings by this key in an object.
+- Interview points: key design is critical; using character counts avoids sorting each string.
+
+Valid-Sodoku.ts
+- Problem: verify a 9x9 Sudoku board is valid.
+- Approach:
+  - Check each row, each column, and each 3x3 block using Set membership.
+- Interview points: validate three dimensions separately, use math to map block indices.
+
+Longest-Consecutive-Sequence.ts
+- Problem: find the length of the longest consecutive sequence in an unsorted array.
+- Approaches:
+  - hash set method: add all numbers to a set, for each number that starts a sequence (num-1 absent), count upward.
+  - sort method: sort the array and scan consecutive values.
+- Interview points: hash-based solution is O(n), sorting is O(n log n); be careful to increment the current number when scanning consecutive values.
+
+Products-of-Array-Except-Self.ts
+- Problem: return an array where each element is the product of all other elements.
+- Approaches:
+  - productExceptSelf: handle zeros explicitly by counting zeros and using total product.
+  - productExceptSelf1: compute prefix and postfix products, then multiply.
+- Interview points: the classic solution avoids division, uses left/right product arrays, and handles multiple zeros correctly.
+
+Encode-Decode-Strings.ts
+- Problem: serialize and deserialize an array of strings.
+- Approach:
+  - encode by concatenating length, a delimiter '#', and the string.
+  - decode by reading the length prefix and extracting the next substring.
+- Interview points: use explicit length encoding to avoid ambiguity if strings contain delimiters.
+
+Longest-Substring.ts
+- Note: currently a placeholder function.
+- Suggested interview pattern:
+  - longest substring without repeating characters using sliding window and hash map.
+  - maintain a map of last seen indices and move the window start.
+
+3. Common interview patterns
+- Hash map / set for quick lookup: complement search, duplicate detection, frequency counts.
+- Sorting when order matters and can be used to simplify comparison.
+- Prefix/postfix arrays for cumulative products or sums.
+- Sliding window for substring or subarray problems.
+- Frequency vector keys for grouping anagrams or canonical representation.
+
+4. Complexity checklist
+- Brute-force: O(n^2) or worse.
+- Sorting: O(n log n).
+- Hashing: O(n) average for insert/lookup.
+- Space: O(n) for maps, sets, or auxiliary arrays.
+
+5. Interview advice
+- Always state the naive solution first, then optimize.
+- Mention edge cases: empty inputs, different sizes, zeros, repeated values.
+- Explain why hashing improves from O(n^2) to O(n) in relevant problems.
+- Use type-safe structures in TypeScript: Map, Set, arrays.
+- Validate assumptions: character set, input ranges, duplicates, zeros.
+
+6. Suggested improvements
+- Fix `Longest-Consecutive-Sequence.ts` hash scan loop to increment the scanning number.
+- Implement a real `Longest-Substring` solution using sliding window.
+- Add tests for key edge cases in each file.
