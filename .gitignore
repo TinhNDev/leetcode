@@ -1,0 +1,34 @@
+# Node.js dependencies
+node_modules/
+
+# TypeScript output
+dist/
+
+# Optional npm debug log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.*
+
+# Ignore build and editor folders
+coverage/
