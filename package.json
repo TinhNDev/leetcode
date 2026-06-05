@@ -5,6 +5,10 @@
   "scripts": {
     "start": "ts-node",
     "build": "tsc --noEmit",
+    "format:names": "node scripts/format-file-names.js --include-dirs",
+    "format:names:write": "node scripts/format-file-names.js --include-dirs --write",
+    "format:filenames": "node scripts/format-file-names.js",
+    "format:filenames:write": "node scripts/format-file-names.js --write",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
